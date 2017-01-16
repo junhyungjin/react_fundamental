@@ -63,7 +63,7 @@
       });
     }
 
-    handleEdit() {
+    handleEdit(name, phone) {
       this.setState({
         contactData: update(this.state.contactData, {
           [this.state.selectedKey]: {
@@ -97,8 +97,8 @@
                   value={this.state.keyword} onChange={this.handleChange}/>
                 <div>{mapToComponents(this.state.contactData)}</div>
                 <ContactDetails
-                  isSeleted={this.state.selectedKey != -1}
                   contact={this.state.contactData[this.state.selectedKey]}
+                  isSeleted={this.state.selectedKey != -1}
                   onRemove={this.handleRemove}
                   onEdit={this.handleEdit}
                 />
