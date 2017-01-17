@@ -33,6 +33,23 @@
         this.handleEdit = this.handleEdit.bind(this);
     }
 
+    /* 컴포넌트가 DOM위에 생기기 전에 실행 */
+    componentWillMount(){
+      const contactData = localStorage.contactData;
+
+      if(contactData){
+        this.setState({
+          contactData: JSON.parse(contactData)
+        })
+      }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+      if(JSON.stringify(prevState.contactDate) != JSON.stringify(this.state.contactData)){
+        localStorage.contactData = JSON.stringify(this.state.contactData);
+      }
+    }
+
     handleChange(e){
       this.setState({
         keyword: e.target.value
